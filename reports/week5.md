@@ -114,3 +114,6 @@ fuzzer = composition of components
 	- [`libfuzzer`](https://docs.rs/libafl_targets/0.11.2/libafl_targets/libfuzzer/index.html): [Libfuzzer](https://www.llvm.org/docs/LibFuzzer.html)-style runtime wrapper for LibAFL
 		- [libfuzzer_test_one_input](https://docs.rs/libafl_targets/0.11.2/libafl_targets/libfuzzer/fn.libfuzzer_test_one_input.html): wrapper for calling `LLVMFuzzerTestOneInput()`
 	- [`coverage`](https://docs.rs/libafl_targets/0.11.2/libafl_targets/coverage/index.html): coverage maps used in AFL
+## 计划
+- 继续学习 Fuzzing 101 with LibAFL，争取跑一些其他应用
+- 学习 gdbfuzz 和 Tardis 等相关工具
