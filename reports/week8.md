@@ -55,7 +55,7 @@
       - `accel/tcg/tcg-runtime.c:gen_helper_libafl_qemu_handle_sync_backdoor`
       - `libafl/exit.c:libafl_exit_request_sync_backdoor`，在 `last_exit_reason` 中保存类别为 sync backdoor
       - `libafl/exit.c:prepare_qemu_exit`，确定为 expected exit，在 `last_exit_reason` 中保存 CPU 状态及 next PC，Qemu 停止运行
-    - 对比 fuzzer 正常/异常工作时的 print 结果，发现没有进行正常的处理流程，推测是出现了 unexpected exit，原因可能是原代码使用的 `FastSnapshotManager` 没有正确地恢复状态。
+    - 对比 fuzzer 正常/异常工作时的 print 结果，发现没有进行正常的处理流程。假如真的发生了 unexpected exit，那么也应该也会给 host 返回相应的 exit reason（例如 `EmuExitReasonError::UnexpectedExit`），然而并没有发生。所以推测原因是原代码使用的 `FastSnapshotManager` 没有正确地恢复状态。
     - 替换为 `QemuSnapshotManager` 可正常工作。
 
 - 经验：出现 corpus 加载失败等表面问题，根源一般是 fuzzer 存在 bug。
